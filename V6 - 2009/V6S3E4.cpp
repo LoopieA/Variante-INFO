@@ -1,35 +1,36 @@
 #include <iostream>
+#include <fstream>
 
 using namespace std;
 
 /*
-Scrieţi un program C/C++ care citeşte de la tastatură un număr natural n(n≤100) şi apoi cele n elemente, numere naturale cu cel mult 4 cifre fiecare, ale unui tablou unidimensional a.
-Programul  afişează  pe  o  linie  a  ecranului  suma  celor  n  elemente  ale  tabloului,  pe  următoarea  linie  a  ecranului  suma  primelor  n-1  elemente  şi  aşa  mai  departe,
-astfel  încât  ultima linie afişată să conţină doar primul element al tabloului.
+Se consideră fişierul BAC.TXT ce conţine un şir crescător cu cel mult un milion de numere naturale de cel mult nouă cifre fiecare, separate prin câte un spaţiu.
+Să se scrie un program C/C++care, folosind un algoritm eficient din punct de vedere al memoriei utilizate şi al timpului de executare,
+citeşte din fişier toţi termenii şiruluişi afişeazăpe ecran, pe o singură linie, fiecare termen distinct al şirului urmat de numărul de apariţii ale acestuia în şir.
+Valorile afişate sunt separate prin câte un spaţiu.
 */
 
 int main()
 {
-    int n, a[101], suma;
+    ifstream f("BAC.TXT");
 
-    cin >> n;
+    int x, y, contor=1;
 
-    for(int i=0; i<n; i++) // citirea tabloului unidimensional
+    f >> x; //se citeste primul termen al sirului in variabila x
+
+    while (f >> y) //se citesc pe rand restul numerelor din sir in variabila y
     {
-        cin >> a[i];
-    }
-
-    cout << endl;
-
-    for(int i=n-1; i>=0; i--) // se calculeaza suma elementelor
-    {
-        suma = 0;
-
-        for(int j=i; j>=0; j--)
+        if (x == y) //daca x si y coincid, contorul care incepe de la 1 creste
         {
-            suma += a[j];
+            contor++;
         }
-
-        cout << suma << endl;
+        else //daca x si y nu coincid inseamna ca am trecut la alt grup de numere din sir, asa ca afisam grupul anterior si numarul de aparitii; x ia valoarea lui y si contorul este restartat
+        {
+            cout << x << " " << contor << " ";
+            x = y;
+            contor = 1;
+        }
     }
+
+    cout << y << " " << contor;
 }
