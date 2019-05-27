@@ -60,7 +60,7 @@ int main()
     {
         nu_e_asta = 0;
 
-        for (int j=0; j<contor; j++) // se compara numarul la care am ajuns cu toate elementele vectorului
+        for (int j=0; v[j]<=i; j++) // se compara numarul la care am ajuns cu toate elementele vectorului care sunt mai mari sau egale cu el
         {
             if (v[j] == i)
             {
@@ -78,7 +78,6 @@ int main()
             cout << i << " ";
             numere_gasite++;
             if(numere_gasite == 2) break;
-
         }
     }
 }
