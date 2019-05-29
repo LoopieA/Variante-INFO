@@ -1,5 +1,5 @@
 ﻿#include <iostream>
-#include <fstream>
+#include <fstream> 
 
 /*
 Fişierul  text  numere.txt  conţine  pe  prima  linie  un  număr  natural  n (n<30000),
