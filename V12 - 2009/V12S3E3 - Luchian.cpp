@@ -2,7 +2,7 @@
 #include <fstream>
 
 /*
-Fişierele text NR1.TXTşi NR2.TXT conţin, separate prin câte un spaţiu, mai multe numere întregi  de  cel  mult  9 cifre  fiecare.
+Fişierele text NR1.TXT şi NR2.TXT conţin, separate prin câte un spaţiu, mai multe numere întregi  de  cel  mult  9 cifre  fiecare.
 Fiecare  dintre  fişiere  conţine  cel  mult  100  de  valori  şi numerele din fiecare fişier sunt ordonate strict crescător.
 Se cere să se afişeze pe ecran, în ordine  crescătoare,  numerele  divizibile  cu  5    care  se  găsesc  doar  în  unul  din  cele  douăfişiere.
 */
@@ -20,11 +20,13 @@ int main()
 
     while(f1 && f2)
     {
-        if (x%5 != 0) f1 >> x; // cautam in f1 pana gasim un termen divizibil cu 5
+        if (x%5 != 0) // cautam in f1 pana gasim un termen divizibil cu 5
+            f1 >> x;
 
-        if (y%5 != 0) f2 >> y; // cautam in f1 pana gasim un termen divizibil cu 5
+        if (y%5 != 0) // cautam in f2 pana gasim un termen divizibil cu 5
+            f2 >> y;
 
-        if (x%5 == 0 && y%5 == 0) // cand am gasit si in f1, si in f2, termeni divizibili cu 5, il afisam pe cel mai mic si doar acel sir cauta urmatorul termen divizibil cu 5
+        if (x%5 == 0 && y%5 == 0) // cand am gasit si in f1 si in f2 un termen divizibil cu 5, il afisam pe cel mai mic si doar acel sir cauta urmatorul termen
         {
             if (x < y)
             {
@@ -43,7 +45,7 @@ int main()
             }
         }
 
-        if (x%5 == 0 && !f2) // in cazul in care am terminat de citit unul dintre siruri, dar am gasit un termen divizibil cu 5 in celalat sir, il afisam si cautam urmatorul termen
+        if (x%5 == 0 && !f2) // in cazul in care am terminat de citit unul dintre siruri dar am gasit un termen divizibil cu 5 in celalat sir il afisam si cautam urmatorul termen
         {
             cout << x << " ";
             f1 >> x;
