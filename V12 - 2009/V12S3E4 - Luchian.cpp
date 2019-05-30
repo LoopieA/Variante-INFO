@@ -1,4 +1,4 @@
-#include <iostream>
+﻿#include <iostream>
 
 using namespace std;
 
@@ -20,7 +20,7 @@ unsigned int sub(unsigned int n)
 
 int main()
 {
-    unsigned int n, sir[21];
+    unsigned int n, sir[21], aux;
 
     cin >> n;
 
@@ -28,6 +28,15 @@ int main()
     {
         for (int i=0; i<n; i++) // se citeste sirul
             cin >> sir[i];
+
+        for (int i=0; i<n-1; i++) // se sorteaza crescator sirul
+            for (int j=i+1; j<n; j++)
+                if (sir[i] > sir[j])
+                {
+                    aux = sir[i];
+                    sir[i] = sir[j];
+                    sir[j] = aux;
+                }
 
         for (int i=0; i<n; i++) // se verifica daca termenii sirului au toate cifrele egale si se afiseaza termenii care satisfac conditia
             if(sub(sir[i]))
