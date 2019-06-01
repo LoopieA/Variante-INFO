@@ -21,7 +21,7 @@ int main()
                 while (f >> n) // citim toate cifrele din sir si folosim vectorul de aparitii pentru a contoriza de cate ori apare fiecare cifra
                         v[n] += 1;
 
-                for (int i=0; i<10; i++) // parcurgem vectorul construit si afisam indicele i de v[i] ori pentru a afisa cerinta exercitiului
+                for (int i=0; i<10; i++) // parcurgem vectorul construit si afisam indicele i de v[i] ori pentru a afisa sirul din cerinta exercitiului
                         for (int j=0; j<v[i]; j++)
                                 cout << i << " ";
         }
