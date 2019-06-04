@@ -26,4 +26,4 @@ int main()
                 contor++;
     }
     cout << contor+1;
-}
+} 
