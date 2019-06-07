@@ -12,58 +12,27 @@ Se cere să se afișeze pe ecran lungimea maximă a unei secvențe neuniforme a 
 Proiectați un algoritm eficient din punctul de vedere al timpului de executare și al memoriei utilizate.
 */
 
-void diferite(unsigned int &a, unsigned int &b, unsigned int &c, ifstream &f) // subprogramul gaseste urmatorii trei termeni consecutivi diferiti dintr-un sir
-{
-    while ((a == b && b == c) || (a == b) || (a == c) || (b == c))
-    {
-        if (a == b && b == c)
-        {
-            f >> a >> b >> c;
-        }
-        if (a == b)
-        {
-            b = c;
-            f >> c;
-        }
-        if (a == c)
-        {
-            a = b;
-            b = c;
-            f >> c;
-        }
-        if (b == c)
-        {
-            a = c;
-            f >> b >> c;
-        }
-    }
-}
-
 int main()
 {
     ifstream f("date.txt");
-    unsigned int a, b, c, n, lungime=3, maxim=0;
-    f >> a >> b >> c; // citim primii trei termeni din sir
-    diferite(a, b, c, f); // gasim primii trei termeni consecutivi si diferiti din sir
-    while (f >> n) // parcurgem in continuare sirul
+    unsigned int a, b, c, n, lungime=2, maxim=0;
+    f >> a >> b; //citim primii doi termeni din sir
+
+    while (f >> c) //parcurgem sirul
     {
-        if (n != b && n!= c) // daca urmatorul termen apartine secventei neuniforme verificam si urmatorul
-        {
-            a = b;
-            b = c;
-            c = n;
+        if (a != b && b != c) //daca termenul citit apartine secventei neuniforme
+        {                    //crestem lungimea si continuam cautarea
             lungime++;
         }
-        else // daca urmatorul termen sparge secventa neuniforma, comparam lungimea secventei gasite cu maximul
-        {    // de pana acum si cautam urmatoarea secventa neuniforma
-            if (lungime > maxim)
+        else                      //daca urmatorul termen sparge secventa neuniforma
+        {                         //comparam lungimea secventei gasite cu maximul de
+            if (lungime > maxim)  //pana acum si cautam urmatoarea secventa neuniforma
                 maxim = lungime;
-            lungime = 3;
-            a = n;
-            f >> b;
-            f >> c;
-            diferite(a, b, c, f);
+            lungime = 2;
         }
+        a = b;
+        b = c;
     }
-    cout << maxim; // afisam maximul gasit
+
+    cout << maxim; //afisam maximul gasit
 }
