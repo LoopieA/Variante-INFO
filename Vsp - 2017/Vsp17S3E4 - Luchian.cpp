@@ -1,36 +1,40 @@
 #include <iostream>
-#include <fstream>
 
 using namespace std;
 
 /*
-Se citesc de la tastatură două numere naturale din intervalul [1,10^9], x și y, cu cel mult
-nouă cifre, unde x are semnificația precizată mai sus, iar y este un termen al sirului dat, si
-se cere să se scrie în fisierul text bac.txt, în ordine strict descrescătoare, separați prin
-câte un spațiu, toti termenii sirului care sunt mai mici sau egali cu y.
-Pentru determinarea termenilor ceruti se utilizează un algoritm eficient din punctul de
-vedere al memoriei si al timpului de executare.
+Subprogramul identice are doi parametri, a și b, prin care primește câte un număr
+natural (10≤a≤b≤106). Subprogramul afișează pe ecran toate numerele naturale din
+intervalul [a,b] care au toate cifrele identice. Numerele afișate sunt separate prin câte un
+spațiu, iar dacă nu există astfel de numere, se afişează pe ecran mesajul nu exista.
+Scrieţi definiţia completă a subprogramului.
 */
+
+void identice(unsigned int a, unsigned int b)
+{
+    unsigned int aux, exista=0;
+    while (a <= b)
+    {
+        aux = a;
+        while (aux > 9)
+        {
+            if (aux%10 == (aux/10)%10)
+                aux = aux / 10;
+            else
+                break;
+        }
+        if (aux <= 9)
+        {
+            exista = 1;
+            cout << a << " ";
+        }
+        a++;
+    }
+    if (exista == 0)
+        cout << "Nu exista";
+}
 
 int main()
 {
-    ofstream g("bac.txt");
-    unsigned int x, y;
-    cin >> x >> y;
-    while (y >= x)
-    {
-        if (y%2 == 0)
-        {
-            g << y << " ";
-            y--;
-        }
-        else
-        {
-            g << y << " ";
-            y++;
-            y /= 2;
-        }
-    }
-    g.close();
-    return 0;
+    identice(700, 1500);
 }
