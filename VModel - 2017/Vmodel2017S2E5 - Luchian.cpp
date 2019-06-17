@@ -1,4 +1,4 @@
-#include <iostream>
+﻿#include <iostream>
 #include <string.h>
 
 using namespace std;
@@ -12,7 +12,8 @@ citit nu conține astfel de cuvinte.
 */
 int main()
 {
-    char s[100];
+    bool flag=false;
+    char s[100], rezultat[100]={};
     char *token;
     cin.getline(s, 100);
 
@@ -20,9 +21,24 @@ int main()
     while (token != NULL)
     {
         if (strlen(token)%2 == 0)
-            cout << "# ";
+        {
+            flag = true;
+            strcat(rezultat, "# ");
+        }
         else
-            cout << token << " ";
+        {
+            strcat(rezultat, token);
+            strcat(rezultat, " ");
+        }
         token = strtok(NULL, " ");
     }
+
+    if (flag == false)
+        cout << "nu exista";
+    else
+    {
+        strcpy(s, rezultat);
+        cout << s;
+    }
+    return 0;
 }
