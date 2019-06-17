@@ -1,4 +1,4 @@
-#include <iostream>
+﻿#include <iostream>
 #include <fstream>
 
 using namespace std;
@@ -15,7 +15,8 @@ vedere al memoriei si al timpului de executare.
 int main()
 {
     ofstream g("bac.txt");
-    unsigned int x=21, y=175;
+    unsigned int x, y;
+    cin >> x >> y;
     while (y >= x)
     {
         if (y%2 == 0)
@@ -31,4 +32,5 @@ int main()
         }
     }
     g.close();
+    return 0;
 }
