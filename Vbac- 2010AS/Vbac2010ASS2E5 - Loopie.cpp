@@ -14,8 +14,5 @@ int main()
 		else
 			cout << s[i];
 	}
-	
-	
-    //return 0;
 }
 
